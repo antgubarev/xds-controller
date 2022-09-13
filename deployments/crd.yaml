@@ -1,0 +1,33 @@
+apiVersion: apiextensions.k8s.io/v1
+kind: CustomResourceDefinition
+metadata:
+  name: sidecars.proxy.company.com
+spec:
+  group: proxy.company.com
+  versions:
+    - name: v1
+      served: true
+      storage: true
+      schema:
+        openAPIV3Schema:
+          type: object
+          properties:
+            spec:
+              type: object
+              properties:
+                appName:
+                  type: string
+                cb:
+                  type: object
+                  properties:
+                    timeout:
+                      type: integer 
+                    tries:
+                      type: integer
+  scope: Cluster 
+  names:
+    plural: sidecars 
+    singular: sidecar 
+    kind: Sidecar
+    shortNames:
+      - sc 
