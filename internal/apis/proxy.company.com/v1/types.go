@@ -7,7 +7,7 @@ type SidecarSpec struct {
 	Cb      struct {
 		Timeout int `json:"timeout"`
 		Tries   int `json:"tries"`
-	}
+	} `json:"cb"`
 }
 
 // +genclient

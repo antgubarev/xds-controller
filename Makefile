@@ -1,11 +1,13 @@
-start:
-	docker-compose up -d
+build-echo:
+	eval $(minikube docker-env) && \
+	docker build -t xds-echo -f ./deployments/echo.Dockerfile .
 
-stop:
-	docker-compose down
+frd-echo:
+	kubectl port-forward pod/echo 8081:80
 
-ping1:
-	curl http://localhost:8081/?echo_env_body=HOSTNAME
+frd-admin:
+	kubectl port-forward pod/echo 9901:9901
 
-ping2:
-	curl http://localhost:8082/?echo_env_body=HOSTNAME
+redeploy:
+	kubectl delete po/echo && \
+	kubectl apply -f deployments/echo.yaml

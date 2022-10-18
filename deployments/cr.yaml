@@ -1,0 +1,9 @@
+apiVersion: proxy.company.com/v1
+kind: Sidecar
+metadata:
+  name: echo 
+spec:
+  appName: echo 
+  cb:
+    timeout: 2000
+    tries: 4
